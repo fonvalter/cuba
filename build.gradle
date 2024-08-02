@@ -23,20 +23,20 @@ buildscript {
     println("")
 
     repositories {
-        mavenLocal()
-
-        if (System.getenv('HAULMONT_REPOSITORY_URL') && !rootProject.hasProperty('dependencyUpdates')) {
-            maven {
-                credentials {
-                    username System.getenv('HAULMONT_REPOSITORY_USER')
-                    password System.getenv('HAULMONT_REPOSITORY_PASSWORD')
-                }
-                url System.getenv('HAULMONT_REPOSITORY_URL')
-            }
-        } else {
-            mavenCentral()
-            maven { url "https://plugins.gradle.org/m2/" }
-            maven { url "https://repo.cuba-platform.com/content/groups/work" }
+        maven {
+            url 'http://192.168.1.15:8081/repository/cuba-premium/'
+        }
+        maven {
+            url 'http://192.168.1.15:8081/repository/repository-haulmont/'
+        }
+        maven {
+            url 'http://192.168.1.15:8081/repository/cuba-work/'
+        }
+        maven {
+            url 'http://192.168.1.15:8081/repository/maven-central/'
+        }
+        maven {
+            url 'http://192.168.1.15:8081/repository/gradle-plugins/'
         }
     }
     dependencies {
